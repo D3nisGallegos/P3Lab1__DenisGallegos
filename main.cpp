@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
 					cout << "--------SUMATORIA--------" <<endl; 
 					cout << "Ingrese el limite de la sumatoria: " <<endl; 
 					cin >> limite; 
-					if (limite <= 0){
+					if (limite <= 1){
 						v = false; 
 						cout << "Numero ingresado no valido. " <<endl; 
 					}else {
@@ -82,19 +82,44 @@ int main(int argc, char** argv) {
 				}
 			case 3: 
 				{
-				int limite = 0;
+				int iteraciones = 0;
+				double n = 0; 
 				bool v = false;
 				while (v == false){
-					cout << "----------------" <<endl; 
-					cout << "Ingrese el limite de la sumatoria: " <<endl; 
-					cin >> limite; 
-					if (limite <= 0){
+					cout << "--------RAIZ CUADRADA--------" <<endl; 
+					cout << "Ingrese el numero a evaluar (puede ser decimal): " <<endl; 
+					cin >> n;
+					cout << "Ingrese el numero de iteraciones: (mayor a 10 y entero)" <<endl; 
+					cin >> iteraciones;  
+					if (iteraciones <= 10 || n <= 0){
 						v = false; 
-						cout << "Numero ingresado no valido. " <<endl; 
+						cout << "Numeros ingresados no validos. " <<endl; 
 					}else {
 						v = true; 
 					}
 				}//Fin del while de entrada. 
+				double inicio = 0;  
+				double mitad = 0; 
+				double final = n; 
+				bool validar = false; 
+				for (int c = 0; c < iteraciones; c++){
+					mitad = (double) (final + inicio) / 2;
+					double verificar = mitad * mitad; 
+					if (verificar == n){
+						cout << "El resultado de la raiz cuadrada es: " <<  mitad <<endl;
+						validar = true; 
+						break;  
+					}else if (verificar > n){
+						final = mitad; 
+					}else if (verificar < n){
+						inicio = mitad; 
+					}
+				}//Fin del for. 
+				if (validar == false){
+					cout << "El resultado de la raiz cuadrada (aproximado) es: " <<  mitad <<endl;
+				}
+				cout << "-------FIN RAIZ CUADRADA-------" <<endl;
+				cout << endl; 
 				break; 
 				}
 		}//Fin del switch 
